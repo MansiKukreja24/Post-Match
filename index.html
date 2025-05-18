@@ -12,48 +12,78 @@
             font-family: 'TT Drugs', sans-serif;
             color: #406656;
             margin: 0;
+            padding: 0;
         }
         .heading {
             font-family: 'Aprila', serif;
         }
         .spicy {
-            color: #ED6335;
+            color: #8B4513;
         }
         .energetic {
-            color: #FDCC47;
+            color: #FFDA63;
         }
         .fresh {
             color: #CADE72;
         }
         .container {
             max-width: 100%;
-            padding-left: 0;
-            padding-right: 0;
+            padding-left: calc(50% - 46vw);
+            padding-right: calc(50% - 46vw);
         }
 
         /* Custom styles to match PDF layout */
         #hero {
-            background-color: #f8f0e3;
-            padding-top: 10rem;
-            padding-bottom: 10rem;
+            background-image: url('home.png');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            width: 85vw;
+            height: 250vh;
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            height: 100vh;
+            color: white;
+            position: relative;
+            z-index: 1;
+            margin-left: 0;
+            margin-right: 0;
         }
+
+        #hero::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('home.jpg');
+            background-size: cover;
+            background-position: center;
+            filter: blur(10px);
+            z-index: -1;
+        }
+
+
         #hero h1 {
             font-size: 9vw;
             font-weight: bold;
             color: #ED6335;
             margin-bottom: 0;
             text-align: center;
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7);
+            position: relative;
+            z-index: 2;
         }
         #hero p {
             font-size: 1.5vw;
-            color: #406656;
+            color: #D3D3D3;
             margin-top: 0.5rem;
             text-align: center;
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7);
+            position: relative;
+            z-index: 2;
         }
         #hero button {
             margin-top: 3rem;
@@ -66,6 +96,8 @@
             cursor: pointer;
             transition: background-color 0.3s ease;
             border: none;
+            position: relative;
+            z-index: 2;
         }
         #hero button:hover {
             background-color: #b8421b;
@@ -83,26 +115,27 @@
         }
         #about .flex {
             display: flex;
-            flex-direction: column; /* Stack on small screens */
+            flex-direction: column;
             align-items: center;
             gap: 4rem;
         }
         #about .md\:flex-row {
-            flex-direction: row; /* Arrange in row on medium screens and up */
+            flex-direction: row;
         }
         #about .md\:w-1\/2 {
-            width: 100%; /* Default width for small screens */
+            width: 100%;
         }
         @media (min-width: 768px) {
             #about .md\:w-1\/2 {
-                width: 50%; /* 50% width on medium screens and up */
+                width: 50%;
             }
         }
         #about img {
             border-radius: 1rem;
             box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
-            width: 100%; /* Make image responsive */
+            width: 100%;
             height: auto;
+            max-width: 100%; /* Make images responsive */
         }
         #about p {
             font-size: 1.2vw;
@@ -138,7 +171,6 @@
         }
         #qrcode-container {
             margin: 0 auto;
-            /* width and height will be set by QR code library, but max-width is good practice */
             max-width: 256px;
         }
         #qrcode p {
@@ -174,7 +206,7 @@
             #about p, #contact p, #qrcode p {
                 font-size: 1.5vw;
             }
-             footer{
+            footer{
                 font-size: 1.2vw;
             }
         }
@@ -302,14 +334,14 @@
 
             // Generate QR code
             const qrcodeContainer = document.getElementById('qrcode-container');
-            const websiteURL = window.location.href; // Or replace with your actual website URL
+            const websiteURL = window.location.href;
             const qrcode = new QRCode(qrcodeContainer, {
                 text: websiteURL,
-                width: 128, // Adjust size as needed
+                width: 128,
                 height: 128,
                 colorDark: "#000000",
                 colorLight: "#ffffff",
-                correctLevel: QRCode.CorrectLevel.H // High error correction
+                correctLevel: QRCode.CorrectLevel.H
             });
         });
     </script>
