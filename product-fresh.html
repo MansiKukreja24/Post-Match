@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Matchbox Design 1</title>
+    <link href="https://fonts.googleapis.com/css2?family=Aprila&family=TT+Drugs&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            font-family: 'TT Drugs', sans-serif;
+            color: #406656;
+            margin: 0;
+        }
+        .heading {
+            font-family: 'Aprila', serif;
+        }
+        .spicy {
+            color: #ED6335;
+        }
+        .energetic {
+            color: #FDCC47;
+        }
+        .fresh {
+            color: #CADE72;
+        }
+        .container {
+            max-width: 100%;
+            padding-left: 0;
+            padding-right: 0;
+        }
+    </style>
+</head>
+<body class="bg-beige-light">
+    <header class="container mx-auto px-4 py-6 flex justify-between items-center">
+        <h1 class="heading text-2xl font-bold text-brown-dark"><img src="logo.png" alt="Post Match Logo" class="h-8 align-middle"></h1>
+        <nav>
+            <ul class="flex space-x-6">
+                <li><a href="index.html" class="hover:text-red-light transition duration-300">Home</a></li>
+                <li><a href="products.html" class="hover:text-red-light transition duration-300">Products</a></li>
+                <li><a href="events.html" class="hover:text-red-light transition duration-300">Events</a></li>
+                <li><a href="index.html#contact" class="hover:text-red-light transition duration-300">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="container mx-auto px-4 py-8">
+        <section class="py-16">
+            <h2 class="heading text-3xl font-bold text-brown-dark mb-8 text-center">Fresh Match</h2>
+            <div class="flex flex-col md:flex-row items-center gap-8">
+                <div class="md:w-1/2">
+                    <img src="fresh_matchbox.png" alt="Matchbox Design 1" class="w-full rounded-lg shadow-md">
+                </div>
+                <div class="md:w-1/2 text-brown-dark">
+                    <p class="text-lg mb-4">
+                        Description of Fresh Match. Include details about the design, theme, colors, and any unique features.
+                    </p>
+                    <p class="text-lg font-semibold">
+                        Price: [Insert Price Here]
+                    </p>
+                    <button class="mt-6 px-6 py-3 bg-red-light text-white rounded-full hover:bg-red-dark transition duration-300 font-bold text-lg">
+                        Add to Cart
+                    </button>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="bg-gray-100 py-6 text-center text-gray-600">
+        <p>&copy; 2025 Post Match. All rights reserved.</p>
+    </footer>
+</body>
+</html>

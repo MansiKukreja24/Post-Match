@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Post Match</title>
+    <link href="https://fonts.googleapis.com/css2?family=Aprila&family=TT+Drugs&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/qrcodejs@1.0.0/qrcode.min.js"></script>
+    <style>
+        body {
+            font-family: 'TT Drugs', sans-serif;
+            color: #406656;
+            margin: 0;
+        }
+        .heading {
+            font-family: 'Aprila', serif;
+        }
+        .spicy {
+            color: #ED6335;
+        }
+        .energetic {
+            color: #FDCC47;
+        }
+        .fresh {
+            color: #CADE72;
+        }
+        .container {
+            max-width: 100%;
+            padding-left: 0;
+            padding-right: 0;
+        }
+
+        /* Custom styles to match PDF layout */
+        #hero {
+            background-color: #f8f0e3;
+            padding-top: 10rem;
+            padding-bottom: 10rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+        #hero h1 {
+            font-size: 9vw;
+            font-weight: bold;
+            color: #ED6335;
+            margin-bottom: 0;
+            text-align: center;
+        }
+        #hero p {
+            font-size: 1.5vw;
+            color: #406656;
+            margin-top: 0.5rem;
+            text-align: center;
+        }
+        #hero button {
+            margin-top: 3rem;
+            padding: 1vw 3vw;
+            background-color: #ED6335;
+            color: white;
+            border-radius: 3rem;
+            font-size: 1.2vw;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            border: none;
+        }
+        #hero button:hover {
+            background-color: #b8421b;
+        }
+
+        #about {
+            padding-top: 8rem;
+            padding-bottom: 8rem;
+        }
+        #about h2 {
+            font-size: 3vw;
+            color: #406656;
+            margin-bottom: 4rem;
+            text-align: center;
+        }
+        #about .flex {
+            display: flex;
+            flex-direction: column; /* Stack on small screens */
+            align-items: center;
+            gap: 4rem;
+        }
+        #about .md\:flex-row {
+            flex-direction: row; /* Arrange in row on medium screens and up */
+        }
+        #about .md\:w-1\/2 {
+            width: 100%; /* Default width for small screens */
+        }
+        @media (min-width: 768px) {
+            #about .md\:w-1\/2 {
+                width: 50%; /* 50% width on medium screens and up */
+            }
+        }
+        #about img {
+            border-radius: 1rem;
+            box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
+            width: 100%; /* Make image responsive */
+            height: auto;
+        }
+        #about p {
+            font-size: 1.2vw;
+            color: #406656;
+            line-height: 1.8;
+        }
+
+        #contact {
+            padding-top: 8rem;
+            padding-bottom: 8rem;
+            text-align: center;
+        }
+        #contact h2 {
+            font-size: 3vw;
+            color: #406656;
+            margin-bottom: 4rem;
+        }
+        #contact p {
+            font-size: 1.2vw;
+            color: #406656;
+            margin-bottom: 0;
+        }
+
+        #qrcode {
+            padding-top: 8rem;
+            padding-bottom: 8rem;
+            text-align: center;
+        }
+        #qrcode h2 {
+            font-size: 3vw;
+            color: #406656;
+            margin-bottom: 4rem;
+        }
+        #qrcode-container {
+            margin: 0 auto;
+            /* width and height will be set by QR code library, but max-width is good practice */
+            max-width: 256px;
+        }
+        #qrcode p {
+            font-size: 1.2vw;
+            color: #406656;
+            margin-top: 2rem;
+        }
+
+        footer {
+            background-color: #f2f2f2;
+            padding-top: 2.5rem;
+            padding-bottom: 2.5rem;
+            text-align: center;
+            color: #6b7280;
+            font-size: 1vw;
+        }
+
+        /* Responsive adjustments using media queries */
+        @media (max-width: 1200px) {
+            #hero h1 {
+                font-size: 7vw;
+            }
+            #hero p {
+                font-size: 2vw;
+            }
+            #hero button {
+                font-size: 1.5vw;
+                padding: 2vw 4vw;
+            }
+            #about h2, #contact h2, #qrcode h2 {
+                font-size: 4vw;
+            }
+            #about p, #contact p, #qrcode p {
+                font-size: 1.5vw;
+            }
+            footer{
+                font-size: 1.2vw;
+            }
+        }
+
+        @media (max-width: 768px) {
+            #hero h1 {
+                font-size: 10vw;
+            }
+            #hero p {
+                font-size: 2.5vw;
+            }
+            #hero button {
+                font-size: 3vw;
+                padding: 3vw 6vw;
+            }
+             #about h2, #contact h2, #qrcode h2 {
+                font-size: 5vw;
+            }
+            #about p, #contact p, #qrcode p {
+                font-size: 2vw;
+            }
+            footer{
+                font-size: 1.5vw;
+            }
+        }
+
+        @media (max-width: 640px) {
+            #hero h1 {
+                font-size: 12vw;
+            }
+            #hero p {
+                font-size: 3vw;
+            }
+            #hero button {
+                font-size: 3.5vw;
+                padding: 4vw 8vw;
+            }
+            #about h2, #contact h2, #qrcode h2 {
+                font-size: 6vw;
+            }
+            #about p, #contact p, #qrcode p {
+                font-size: 2.5vw;
+            }
+            footer{
+                font-size: 2vw;
+            }
+        }
+    </style>
+</head>
+<body class="bg-beige-light">
+    <header class="container mx-auto px-4 py-6 flex justify-between items-center">
+        <h1 class="heading text-2xl font-bold text-brown-dark"><img src="logo.png" alt="Post Match Logo" class="h-12 align-middle"></h1>
+        <nav>
+            <ul class="flex space-x-6">
+                <li><a href="index.html" class="hover:text-red-light transition duration-300">Home</a></li>
+                <li><a href="#about" class="hover:text-red-light transition duration-300">About</a></li>
+                <li><a href="products.html" class="hover:text-red-light transition duration-300">Products</a></li>
+                <li><a href="events.html" class="hover:text-red-light transition duration-300">Events</a></li>
+                <li><a href="#contact" class="hover:text-red-light transition duration-300">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="container mx-auto px-4 py-8">
+        <section id="hero" class="text-center">
+            <h1 class="heading"><span class="spicy">Post</span> <span class="energetic">Match</span></h1>
+            <p class="text-lg mt-4 text-brown-dark">The spicier, the better.</p>
+            <p class="text-lg mt-4 text-brown-dark">Est. 2025</p>
+        </section>
+
+        <section id="about" class="py-16">
+            <h2 class="heading text-center">About Post Match</h2>
+            <div class="flex justify-center items-center">
+                <div class="md:w-1/2 flex justify-center">
+                    <img src="about-image.png" alt="Post Match Products" style="max-width: 60%;">
+                </div>
+                <div class="md:w-1/2 text-brown-dark">
+                    <p class="text-lg">
+                        Post Match is a fiery and fun safety matches brand that brings spice to the everyday spark. With bold colors and playful energy, it's designed for those who like their fire with flair. Whether it's lighting up a moment or making a statement, Post Match delivers heat with attitude - small stick, big spark.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact" class="py-16">
+            <h2 class="heading">Contact Us</h2>
+            <p class="text-lg text-gray-700 text-center">
+                For inquiries, collaborations, or to learn more about Post Match, please reach out to us.
+            </p>
+            <div class="mt-8 text-center">
+                <p class="text-lg text-gray-700">Email: info@postmatch.com</p>
+            </div>
+        </section>
+
+        <section id="qrcode" class="py-16 text-center">
+            <h2 class="heading">Scan to Visit</h2>
+            <div id="qrcode-container" class="mx-auto">
+                </div>
+            <p class="text-lg text-gray-700 mt-4">
+                Scan this QR code to visit our website on your mobile device.
+            </p>
+        </section>
+    </main>
+
+    <footer class="bg-gray-100 py-6 text-center text-gray-600">
+        <p>&copy; 2025 Post Match. All rights reserved.</p>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href').substring(1);
+                    const targetElement = document.getElementById(targetId);
+                    if (targetElement) {
+                        targetElement.scrollIntoView({
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+
+            // Generate QR code
+            const qrcodeContainer = document.getElementById('qrcode-container');
+            const websiteURL = window.location.href; // Or replace with your actual website URL
+            const qrcode = new QRCode(qrcodeContainer, {
+                text: websiteURL,
+                width: 128, // Adjust size as needed
+                height: 128,
+                colorDark: "#000000",
+                colorLight: "#ffffff",
+                correctLevel: QRCode.CorrectLevel.H // High error correction
+            });
+        });
+    </script>
+</body>
+</html>
