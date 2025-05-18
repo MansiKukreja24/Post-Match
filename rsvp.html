@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RSVP - Perfect Match Dinner</title>
+    <link href="https://fonts.googleapis.com/css2?family=Aprila&family=TT+Drugs&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            font-family: 'TT Drugs', sans-serif;
+            color: #406656;
+            margin: 0;
+            background-color: #F8F0E3;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+        .rsvp-container {
+            background-color: #FFFFFF;
+            padding: 3rem;
+            border-radius: 0.5rem;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            width: 90%;
+            max-width: 600px;
+        }
+        .heading {
+            font-family: 'Aprila', serif;
+            font-size: 2rem;
+            color: #A68A64;
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: #406656;
+            font-weight: bold;
+        }
+        input[type="text"],
+        input[type="email"],
+        input[type="number"],
+        textarea,
+        select {
+            width: calc(100% - 1rem);
+            padding: 0.75rem;
+            border: 1px solid #D3D3D3;
+            border-radius: 0.3rem;
+            font-family: 'TT Drugs', sans-serif;
+            font-size: 1rem;
+            color: #406656;
+        }
+        .submit-button {
+            padding: 1rem 2rem;
+            background-color: #ED6335;
+            color: white;
+            border-radius: 2rem;
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            border: none;
+            width: fit-content;
+            display: block;
+            margin-top: 2rem;
+        }
+        .submit-button:hover {
+            background-color: #b8421b;
+        }
+        .form-navigation {
+            margin-top: 2rem;
+            text-align: center;
+            color: #406656;
+        }
+        .form-navigation a {
+            color: #ED6335;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        .form-navigation a:hover {
+            color: #b8421b;
+        }
+        .confirmation-message {
+            text-align: center;
+            margin-top: 2rem;
+            padding: 1rem;
+            background-color: #CADE72;
+            color: #406656;
+            border-radius: 0.3rem;
+            font-weight: bold;
+            display: none; /* Hidden by default */
+        }
+    </style>
+</head>
+<body>
+    <div class="rsvp-container">
+        <h2 class="heading">RSVP for Perfect Match Dinner</h2>
+        <form id="rsvpForm" action="#" method="POST">
+            <div class="form-group">
+                <label for="name">Full Name:</label>
+                <input type="text" id="name" name="name" required>
+            </div>
+
+            <div class="form-group">
+                <label for="email">Email Address:</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+
+            <div class="form-group">
+                <label for="phone">Phone Number (Optional):</label>
+                <input type="number" id="phone" name="phone">
+            </div>
+
+            <div class="form-group">
+                <label for="guests">Number of Guests:</label>
+                <select id="guests" name="guests">
+                    <option value="1" selected>1</option>
+                    <option value="2">2</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="dietary">Dietary Restrictions (Optional):</label>
+                <textarea id="dietary" name="dietary" rows="3"></textarea>
+            </div>
+
+            <button type="submit" class="submit-button">Confirm RSVP</button>
+        </form>
+        <div class="confirmation-message" id="confirmationMessage">
+            Booking Confirmed! We look forward to seeing you.
+        </div>
+        <div class="form-navigation">
+            <a href="index.html">Back to Home</a>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('rsvpForm').addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevent the default form submission
+
+            // In a real scenario, you would send the form data to the server here
+            // using AJAX (e.g., fetch API).
+
+            // For this example, we'll just simulate a successful submission
+            document.getElementById('confirmationMessage').style.display = 'block';
+            document.getElementById('rsvpForm').style.display = 'none'; // Optionally hide the form
+        });
+    </script>
+</body>
+</html>
